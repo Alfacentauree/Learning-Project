@@ -1,0 +1,9 @@
+def new_word(word):
+    first_latter = word[0]
+    if first_latter in 'aeiou':
+        big_word = word + 'ay'
+    else:
+        big_word = word[1:] + first_latter + 'ay'
+    return big_word
+big_word=new_word('')
+print(big_word)
