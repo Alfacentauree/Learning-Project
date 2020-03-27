@@ -1,0 +1,39 @@
+import matplotlib
+import matplotlib.pyplot as plt
+import numpy as np
+
+
+labels = ['USA', 'CHINA', 'ITALY', 'SPAIN', 'INDIA']
+Total_Cases = [85755,81340,80589,64059,843]
+Total_Deaths = [1304,3292,8215,4858,20]
+
+x = np.arange(len(labels))  # the label locations
+width = 0.35  # the width of the bars
+
+fig, ax = plt.subplots()
+rects1 = ax.bar(x - width/2, Total_Cases, width, label='Cases')
+rects2 = ax.bar(x + width/2, Total_Deaths, width, label='Deaths')
+
+# Add some text for labels, title and custom x-axis tick labels, etc.
+ax.set_ylabel('Situation')
+ax.set_title("Covid 19")
+ax.set_xticks(x)
+ax.set_xticklabels(labels)
+ax.legend()
+
+
+def autolabel(rects):
+    """Attach a text label above each bar in *rects*, displaying its height."""
+    for rect in rects:
+        height = rect.get_height()
+        ax.annotate('{}'.format(height),
+                    xy=(rect.get_x() + rect.get_width() / 2, height),
+                    xytext=(0, 1),  # 3 points vertical offset
+                    textcoords="offset points",
+                    ha='center', va='bottom')
+
+
+autolabel(rects1)
+autolabel(rects2)
+
+fig.tight_layout()
